@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta http-equiv="Content-Security-Policy" script-src='unsafe-inline' ;>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <title>weddinvy</title>
+    <script>
+        function checkboxes(id) {
+            let age = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            document.getElementById("invitati").innerHTML = age + ' invitati primiti';
+        };
+    </script>
+</head>
+    <body>
+        <section data-role="page">
+            <header data-role="header">
+                <h1>weddInvy</h1>
+            </header>
+            <article role="main" class="ui-content">
+                <form>
+                    <input id="filterTable-input" data-type="search">
+                </form>
+                <h2 id="invitati" data-position="fixed">0 invitati</h2>
+                <table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+                    <thead>
+                        <tr>
+                            <th data-priority="1">Masa nr.</th>
+                            <th data-priority="persist">Nume invitat</th>
+                            <th data-priority="2">Condus la masa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>15</th>
+                            <td><b>Vlad Vasile</b></td>
+                            <td>
+                                <form>
+                                    <input id="checkbox-mini-0" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
+                                    <label for="checkbox-mini-0">Verificat</label>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td><b>Andra Mihaila</b></td>
+                            <td>
+                                <form>
+                                    <input id="checkbox-mini-1" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
+                                    <label for="checkbox-mini-1">Verificat</label>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <td><b>Lavinia Mihaila</b></td>
+                            <td>
+                                <form>
+                                    <input id="checkbox-mini-2" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
+                                    <label for="checkbox-mini-2">Verificat</label>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td><b>Raluca Mihaila</b></td>
+                            <td>
+                                <form>
+                                    <input id="checkbox-mini-3" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
+                                    <label for="checkbox-mini-3">Verificat</label>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <footer data-role="footer" data-position="fixed">
+                <h4>Created by vlad.theimpaler</h4>
+            </footer>
+        </section>
+        <script src="scripts/jquery-1.8.0.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+    </body>
+</html>
