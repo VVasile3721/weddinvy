@@ -15,29 +15,23 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <title>weddinvy</title>
-    <script>
-        function checkboxes(id) {
-            let age = document.querySelectorAll('input[type="checkbox"]:checked').length;
-            document.getElementById("invitati").innerHTML = age + ' invitati primiti';
-        };
-    </script>
 </head>
     <body>
         <section data-role="page">
-            <header data-role="header">
+            <header data-role="header" data-theme="b">
                 <h1>weddInvy</h1>
             </header>
-            <article role="main" class="ui-content">
+            <article role="main" class="ui-content" data-theme="b">
                 <form>
                     <input id="filterTable-input" data-type="search">
                 </form>
-                <h2 id="invitati" data-position="fixed">0 invitati</h2>
+                <p id="guests">Waiting guests!</p>
                 <table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
                     <thead>
                         <tr>
-                            <th data-priority="1">Masa nr.</th>
-                            <th data-priority="persist">Nume invitat</th>
-                            <th data-priority="2">Condus la masa</th>
+                            <th data-priority="1">Table nr.:</th>
+                            <th data-priority="persist">Guest name:</th>
+                            <th data-priority="2">Checked in:</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,8 +40,9 @@
                             <td><b>Vlad Vasile</b></td>
                             <td>
                                 <form>
-                                    <input id="checkbox-mini-0" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
-                                    <label for="checkbox-mini-0">Verificat</label>
+                                    <label for="checkbox-mini-0">Check in</label>
+                                    <input id="checkbox-mini-0" type="checkbox" name="checkbox-mini-0" data-mini="true" onchange="checkboxes(this.id)">
+                                    <input id="checkbox-mini-0" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">
                                 </form>
                             </td>
                         </tr>
@@ -56,8 +51,9 @@
                             <td><b>Andra Mihaila</b></td>
                             <td>
                                 <form>
-                                    <input id="checkbox-mini-1" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
-                                    <label for="checkbox-mini-1">Verificat</label>
+                                    <label for="checkbox-mini-1">Check in</label>
+                                    <input id="checkbox-mini-1" type="checkbox" name="checkbox-mini-0" data-mini="true" onchange="checkboxes(this.id)">
+                                    <input id="checkbox-mini-1" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">
                                 </form>
                             </td>
                         </tr>
@@ -66,8 +62,9 @@
                             <td><b>Lavinia Mihaila</b></td>
                             <td>
                                 <form>
-                                    <input id="checkbox-mini-2" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
-                                    <label for="checkbox-mini-2">Verificat</label>
+                                    <label for="checkbox-mini-2">Check in</label>
+                                    <input id="checkbox-mini-2" type="checkbox" name="checkbox-mini-0" data-mini="true" onchange="checkboxes(this.id)">
+                                    <input id="checkbox-mini-2" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">
                                 </form>
                             </td>
                         </tr>
@@ -76,22 +73,23 @@
                             <td><b>Raluca Mihaila</b></td>
                             <td>
                                 <form>
-                                    <input id="checkbox-mini-3" type="checkbox" name="mycheckbox" data-mini="true" onchange="checkboxes(this.id)">
-                                    <label for="checkbox-mini-3">Verificat</label>
+                                    <label for="checkbox-mini-3">Check in</label>
+                                    <input id="checkbox-mini-3" type="checkbox" name="checkbox-mini-0" data-mini="true" onchange="checkboxes(this.id)">
+                                    <input id="checkbox-mini-3" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">
                                 </form>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </article>
-            <footer data-role="footer" data-position="fixed">
-                <h4>Created by vlad.theimpaler</h4>
+            <footer data-role="footer" data-position="fixed" data-theme="b">
+                <h3>vlad.theimpaler &copy; 2018</h3>
             </footer>
         </section>
         <script src="scripts/jquery-1.8.0.min.js"></script>
         <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
+        <script src="scripts/index.js"></script>
     </body>
 </html>
