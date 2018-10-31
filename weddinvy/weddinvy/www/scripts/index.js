@@ -4,6 +4,61 @@
 // and then run "window.location.reload()" in the JavaScript Console.
 //$(document).ready(function () {
 //});
+function Generator() { };
+Generator.prototype.rand = Math.floor(Math.random() * 26) + Date.now();
+Generator.prototype.getId = function () {
+    return this.rand++;
+};
+var idGen = new Generator();
+var uniqueId = idGen.getId();
+
+var guests = [
+    {
+        "TableNo": `10`,
+        "GuestName": `Vasile Vlad`,
+        "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
+    },
+    {
+        "TableNo": `21`,
+        "GuestName": `Mihaila Andra`,
+        "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
+    }
+];
+
+const createNew = () => {
+    $.mobile.changePage('create.html');
+}
+
+$('#form').submit(function (event) {
+    event.preventDefault();
+
+    var $form = $(this);
+    var formData = {
+        TableNo: $form.find('input[name=table]').val(),
+        GuestName: $form.find('input[name=guest]').val(),
+        CheckIn: `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
+    };
+    console.log(formData);
+    console.log(guests);
+    guests.push({
+        "TableNo": formData.TableNo,
+        "GuestName": formData.GuestName,
+        "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
+    });
+    console.log(guests);
+    $('#guest-table').listview('refresh');
+});
+
+var tbody = $('#guest-table tbody'),
+    props = ["TableNo", "GuestName", "CheckIn"];
+$.each(guests, function (i, guest) {
+    var tr = $('<tr>');
+    $.each(props, function (i, prop) {
+        $('<td>').html(guest[prop]).appendTo(tr);
+    });
+    tbody.append(tr);
+});
+
 const checkboxes = id => {
     var checkedGuests = document.querySelectorAll('input[type="checkbox"]:checked').length;
     var totalGuests = document.querySelectorAll('input[type="checkbox"]').length;
