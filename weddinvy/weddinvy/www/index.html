@@ -21,40 +21,23 @@
             <header data-role="header" data-theme="b">
                 <h1>weddInvy</h1>
                 <a onclick="createNew()" href="#" data-role="button" data-icon="plus">Add New</a>
-                <!--<a href="#login" data-role="button" data-rel="dialog" data-transition="pop" data-icon="plus">Add guest</a>-->
             </header>
             <article role="main" class="ui-content" data-theme="b">
-                    <!--<div data-role="dialog" id="login">
-                        <div data-role="content">
-                            <form id="login_form">
-                                <fieldset>
-                                    <div data-role="fieldcontain">
-                                        <label>USER NAME:</label>
-                                        <input type="text" id="name" value="" />
-                                    </div>
-                                    <div data-role="fieldcontain">
-                                        <label>EMAIL ID:</label>
-                                        <input type="text" id="email" value="" />
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>-->
-                    <form>
-                        <input id="filterTable-input" data-type="search">
-                    </form>
-                    <p id="guests">Waiting guests!</p>
-                    <table data-role="table" id="guest-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
-                        <thead>
-                            <tr>
-                                <th data-priority="1">Table nr.:</th>
-                                <th data-priority="persist">Guest name:</th>
-                                <th data-priority="2">Checked in:</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-</article>
+                <form>
+                    <input id="filterTable-input" data-type="search">
+                </form>
+                <p id="guests">Waiting guests!</p>
+                <table data-role="table" id="guest-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+                    <thead>
+                        <tr>
+                            <th data-priority="1">Table nr.:</th>
+                            <th data-priority="persist">Guest name:</th>
+                            <th data-priority="2">Checked in:</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </article>
             <footer data-role="footer" data-position="fixed" data-theme="b">
                 <h3>vlad.theimpaler &copy; 2018</h3>
             </footer>

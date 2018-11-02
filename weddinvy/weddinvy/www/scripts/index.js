@@ -2,19 +2,6 @@
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints, 
 // and then run "window.location.reload()" in the JavaScript Console.
-//$(document).ready(function () {
-//});
-//function refreshPage() {
-//    $.mobile.changePage(
-//        window.location.href,
-//        {
-//            allowSamePageTransition: true,
-//            transition: 'none',
-//            showLoadMsg: false,
-//            reloadPage: true
-//        }
-//    );
-//}
 
 function Generator() { };
 Generator.prototype.rand = Math.floor(Math.random() * 26) + Date.now();
@@ -43,8 +30,6 @@ if (localStorage.getItem("guests") == undefined) {
 var guests = JSON.parse(localStorage.getItem("guests"));
 
 const createNew = () => {
-    //$.mobile.changePage('create.html');
-    //$.mobile.pageContainer.pagecontainer("change", "create.html");
     window.location = "create.html";
 }
 

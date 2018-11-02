@@ -17,9 +17,6 @@ $('#form').submit(function (event) {
     var guests = JSON.parse(localStorage.getItem("guests"));
     guests.push(formData);
     localStorage.setItem("guests", JSON.stringify(guests));
-    console.log('well it got here');
-    //$.mobile.changePage('index.html');
-    //$.mobile.pageContainer.pagecontainer("change", "index.html");
     window.location = "index.html";
 });
 
