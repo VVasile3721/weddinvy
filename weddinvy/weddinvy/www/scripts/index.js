@@ -4,6 +4,18 @@
 // and then run "window.location.reload()" in the JavaScript Console.
 //$(document).ready(function () {
 //});
+//function refreshPage() {
+//    $.mobile.changePage(
+//        window.location.href,
+//        {
+//            allowSamePageTransition: true,
+//            transition: 'none',
+//            showLoadMsg: false,
+//            reloadPage: true
+//        }
+//    );
+//}
+
 function Generator() { };
 Generator.prototype.rand = Math.floor(Math.random() * 26) + Date.now();
 Generator.prototype.getId = function () {
@@ -12,7 +24,7 @@ Generator.prototype.getId = function () {
 var idGen = new Generator();
 var uniqueId = idGen.getId();
 
-var guests = [
+var guestsArr = [
     {
         "TableNo": `10`,
         "GuestName": `Vasile Vlad`,
@@ -24,30 +36,17 @@ var guests = [
         "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
     }
 ];
-
-const createNew = () => {
-    $.mobile.changePage('create.html');
+if (localStorage.getItem("guests") == undefined) {
+    localStorage.setItem("guests", JSON.stringify(guestsArr));
 }
 
-$('#form').submit(function (event) {
-    event.preventDefault();
+var guests = JSON.parse(localStorage.getItem("guests"));
 
-    var $form = $(this);
-    var formData = {
-        TableNo: $form.find('input[name=table]').val(),
-        GuestName: $form.find('input[name=guest]').val(),
-        CheckIn: `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
-    };
-    console.log(formData);
-    console.log(guests);
-    guests.push({
-        "TableNo": formData.TableNo,
-        "GuestName": formData.GuestName,
-        "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
-    });
-    console.log(guests);
-    $('#guest-table').listview('refresh');
-});
+const createNew = () => {
+    //$.mobile.changePage('create.html');
+    //$.mobile.pageContainer.pagecontainer("change", "create.html");
+    window.location = "create.html";
+}
 
 var tbody = $('#guest-table tbody'),
     props = ["TableNo", "GuestName", "CheckIn"];
@@ -73,35 +72,3 @@ const enableCheckbox = id => {
     console.log('should enable back');
     $('#' + id).prop('disabled', false).checkboxradio('refresh');
 }
-
-
-
-
-//(function () {
-//    "use strict";
-
-//    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-
-//    function onDeviceReady() {
-//        // Handle the Cordova pause and resume events
-//        document.addEventListener( 'pause', onPause.bind( this ), false );
-//        document.addEventListener( 'resume', onResume.bind( this ), false );
-        
-//        // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-//        var parentElement = document.getElementById('deviceready');
-//        var listeningElement = parentElement.querySelector('.listening');
-//        var receivedElement = parentElement.querySelector('.received');
-//        listeningElement.setAttribute('style', 'display:none;');
-//        receivedElement.setAttribute('style', 'display:block;');
-//        //navigator.vibrate(2000);
-
-//    };
-
-//    function onPause() {
-//        // TODO: This application has been suspended. Save application state here.
-//    };
-
-//    function onResume() {
-//        // TODO: This application has been reactivated. Restore application state here.
-//    };
-//} )();
