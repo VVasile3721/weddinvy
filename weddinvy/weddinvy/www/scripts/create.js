@@ -12,7 +12,7 @@ $('#form').submit(function (event) {
     var formData = {
         TableNo: $form.find('input[name=table]').val(),
         GuestName: $form.find('input[name=guest]').val(),
-        CheckIn: `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)">`
+        CheckIn: `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)"><input id="${x}" type="button" data-mini="true" value="DELETE" data-icon="delete" class="deleteBtn">`
     };
     var guests = JSON.parse(localStorage.getItem("guests"));
     guests.push(formData);
