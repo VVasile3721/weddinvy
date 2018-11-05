@@ -1,6 +1,6 @@
 ﻿// For an introduction to the Blank template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkID=397704
-// To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints, 
+// To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints,
 // and then run "window.location.reload()" in the JavaScript Console.
 
 function Generator() { };
@@ -23,6 +23,9 @@ var guestsArr = [
         "CheckIn": `<form><label for="checkbox-mini-${x = idGen.getId()}">Check in</label><input id="checkbox-mini-${x}" type="checkbox" name="checkbox-mini-${x}" data-mini="true" onchange="checkboxes(this.id)"><input id="checkbox-mini-${x}" type="button" data-mini="true" value="Uncheck" onclick="enableCheckbox(this.id)"><input id="${x}" type="button" data-mini="true" value="DELETE" data-icon="delete" class="deleteBtn">`
     }
 ];
+
+//<a href="#" id="deleteBtn" data-role="button">DELETE</a>
+
 if (localStorage.getItem("guests") == undefined) {
     localStorage.setItem("guests", JSON.stringify(guestsArr));
 }
@@ -33,6 +36,39 @@ const createNew = () => {
     window.location = "create.html";
 }
 
+/*$(document).delegate('#deleteBtn', 'click', function() {
+  var currentRow = $(this).closest("tr");
+  var col1 = currentRow.find(".item0").text();
+  var col2 = currentRow.find(".item0").text();
+  var tableNr = col1;
+  var guestName = col2;
+  tableNr = tableNr.split("Table nr.:").pop();
+  guestName = guestName.split("Guest name:").pop();
+  $(this).simpledialog({
+    'mode' : 'bool',
+    'prompt' : `Are you sure you want to delete guest ${guestName}?`,
+    'useModal': true,
+    'buttons' : {
+      'OK': {
+        click: function () {
+          let storredArr = JSON.parse(localStorage.getItem("guests"));
+          storredArr = storredArr.filter(el => el.TableNo !== data);
+          localStorage.setItem("guests", JSON.stringify(storredArr));
+          window.location.reload(true);
+        }
+      },
+      'Cancel': {
+        click: function () {
+          //window.location = "index.html";
+          console.log('cancelled!')
+        },
+        icon: "delete",
+        theme: "c"
+      }
+    }
+  })
+})
+*/
 $("#guest-table").on('click', '.deleteBtn', function () {
     var currentRow = $(this).closest("tr");
     var col1 = currentRow.find(".item0").text();
@@ -44,10 +80,6 @@ $("#guest-table").on('click', '.deleteBtn', function () {
     someArray2 = someArray2.filter(el => el.TableNo !== data);
     localStorage.setItem("guests", JSON.stringify(someArray2));
     window.location.reload(true);
-    //log("", "destructive filter/reassign " + data + " removed > someArray2 =",
-    //    format(someArray2));
-    //log(`**someArray2.length ${someArray2.length}`);
-    //alert(data);
 });
 
 var tbody = $('#guest-table tbody'),
@@ -71,6 +103,5 @@ const checkboxes = id => {
 }
 
 const enableCheckbox = id => {
-    console.log('should enable back');
     $('#' + id).prop('disabled', false).checkboxradio('refresh');
 }
